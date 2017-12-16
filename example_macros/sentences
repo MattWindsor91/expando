@@ -1,0 +1,269 @@
+# The format is quite simple; %% acts as a separator delimiting groups
+# of macro expansions, in which the first line following a %%
+# represents the name of the macro and subsequent lines denote
+# potential macro expansions.
+
+# Any empty macro expansion group is ignored, so you can put a %% at the
+# beginning or end of the file if you wish.  This can help if you want to
+# concatenate macro files.
+
+# Macros whose names begin with | are 'function macros': they behave
+# like normal macros except for having a special macro ${}, which
+# expands to the function macro's argument.
+
+# Inside a macro expansion:
+#   - ${M} expands to a randomly chosen expansion of macro M.
+#   - ${M|f} expands to a randomly chosen expansion of function macro |f,
+#     with each ${} in the chosen expansion of |f being replaced with ${M}.
+#   - ${EMPTY} expands to the empty string.
+#   - All leading and trailing whitespace is removed: use ${EMPTY} at the
+#     beginning or end of an expansion if you need to preserve it.
+#
+# The output of `expando` is the expansion of the last macro in the file.
+%%
+ARTICLE
+That
+The
+This
+
+%%
+ADVERB
+
+${NOUN}-${VERB_BASE}ingly
+Violently
+Sarcastically
+Amazingly
+Wonderfully
+Unbelievably
+Fondly
+Stupendously
+Rapidly
+Slowly
+Boringly
+Stupefyingly
+
+%%
+VERB_PAST
+
+Regarded
+Scheduled
+Harmed
+Played
+Enjoyed
+Enqueued
+Broke
+
+%%
+VERB_BASE
+
+Kill
+Destroy
+Reproduce
+Jive
+Present
+Explode
+Break
+Entertain
+Please
+Enthrall
+Entrance
+Broadcast
+Sleep
+
+%%
+ANY_VERB_SINGULAR
+${VERB_PAST}
+${VERB_BASE}
+
+%%
+ANY_VERB_PLURAL
+${VERB_PAST}
+${VERB_BASE}s
+
+%%
+PLURAL_NOUN
+
+Ideas
+Adventures
+Legumes
+Projects
+Fridges
+Sandwiches
+Radios
+Bants
+Pants
+Darts
+Miscellanea
+Melodies
+Harmonies
+Engineers
+Computers
+Managers
+Chiefs
+Knives
+
+%%
+NOUN
+
+Legume
+Trickster
+Idea
+Silence
+Christmas
+Face
+Entertainment
+Fridge
+Sandwich
+Radio
+Music
+Song
+Banter
+Dart
+Basement
+Discourse
+Debate
+Speech
+Drama
+Politician
+Student
+Musician
+Session
+
+%%
+ANY_NOUN
+${NOUN}
+${PLURAL_NOUN}
+
+%%
+ADJECTIVE
+
+Colourless
+Green
+Wireless
+Wired
+Insidious
+${NOUN}tastic
+${NOUN}-tacular
+Melodic
+Harmonic
+Tuneful
+Old
+Musical
+Magical
+Hairy
+Untitled
+Articulate
+Boring
+Zany
+Groovy
+Bodacious
+Radical
+Unbelievable
+Dank
+Holy
+Incredible
+Mysterious
+Horrible
+Terrible
+Woeful
+Dismal
+Discontinued
+
+%%
+EXHORTATION
+# Commands like "Slow Down", "Get Up", etc.
+
+Go Live
+Slow Down
+Speed Up
+Get Up
+Go West
+Get Ahead
+Get Straight
+Get Physical
+Go Vegan
+
+%%
+STRAIGHT_ESQUE_WORD
+# Synonyms for "Straight".
+
+Straight
+Direct
+
+%%
+ZONE_ESQUE_WORD
+# Synonyms for "Zone".
+
+Zone
+Place
+Domain
+Realm
+Area
+Locale
+Location
+
+%%
+DIRECTION
+Down
+Up
+Sideways
+Around
+
+%%
+PREPOSITION
+
+In
+On
+Underneath
+Beside
+Above
+Atop
+Around
+
+%%
+POSSESSIVE
+My
+Your
+Her
+His
+Its
+Their
+
+%%
+ARTICLE_OR_POSSESSIVE
+${ARTICLE}
+${POSSESSIVE}
+
+%%
+|adj
+# Possibly add a string of adjectives before the macro expansion.
+
+${ADVERB} ${ADJECTIVE} ${}
+${ADJECTIVE} ${}
+${}
+${ADJECTIVE} ${|adj}
+
+%%
+|P?
+# Possibly replace the macro with emptiness.
+# If not, leave a trailing space at the _end_ of the macro.
+
+${EMPTY}
+${} ${EMPTY}
+
+%%
+|adv
+# Possibly add an adverb before or after the macro expansion.
+
+${ADVERB} ${}
+${}
+${} ${ADVERB}
+
+%%
+
+# Remember, the last macro (eg, this one) is the one that gets expanded.
+
+BASE
+${EXHORTATION|adv}, ${ANY_NOUN|adj}!
+${ARTICLE_OR_POSSESSIVE|P?}${NOUN|adj} ${ANY_VERB_PLURAL|adv}
+${ARTICLE_OR_POSSESSIVE|P?}${PLURAL_NOUN|adj} ${ANY_VERB_SINGULAR|adv}
