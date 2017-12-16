@@ -6,16 +6,16 @@
 
 ```
 $ ./expando -n 10 example_macros/sentences
-Legume-Entranceingly Go West, Articulate Idea!
-Wonderfully Slow Down, Insidious Melodies!
-Wonderfully Bodacious Discourse Harmed Sarcastically
-Entertainment Scheduled Stupefyingly
-Mysterious Trickster Harmed
-Speed Up, Tuneful Sandwich!
-Get Straight, Face-Pleaseingly Incredible Face!
-Boringly Unbelievable Miscellanea Break Stupefyingly
-Colourless Managers Enjoyed Boringly
-The Slowly Harmonic Knives Regarded Stupendously
+Debate-Jivingly Go Live, Musician!
+Slowly Get Up, Old Drama!
+Rapidly Go West, Incredible Student!
+Slow Down Fondly, Darts!
+Slow Down Amazingly, Silence!
+Radio-tacular Song Played Stupendously
+Get Straight Violently, Stupefyingly Hairy Song!
+The Melodic Knives Wonderfully Enqueued
+The Insidious Radio Fondly Broadcasts
+Go West Violently, Stupendously Green Projects!
 ```
 
 ## Usage

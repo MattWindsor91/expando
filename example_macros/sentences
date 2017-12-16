@@ -29,7 +29,7 @@ This
 %%
 ADVERB
 
-${NOUN}-${VERB_BASE}ingly
+${NOUN}-${VERB_ING}ly
 Violently
 Sarcastically
 Amazingly
@@ -54,21 +54,36 @@ Enqueued
 Broke
 
 %%
-VERB_BASE
+VERB_BASE_ENDING_IN_E
+# Split these off because they lose the 'e' when we add 'ing'.
+Reproduc
+Jiv
+Explod
+Pleas
+Entranc
 
+%%
+VERB_BASE_OTHER
 Kill
 Destroy
-Reproduce
-Jive
 Present
-Explode
 Break
 Entertain
-Please
 Enthrall
-Entrance
 Broadcast
 Sleep
+
+%%
+VERB_BASE
+
+${VERB_BASE_ENDING_IN_E}e
+${VERB_BASE_OTHER}
+
+%%
+VERB_ING
+
+${VERB_BASE_ENDING_IN_E}ing
+${VERB_BASE_OTHER}ing
 
 %%
 ANY_VERB_SINGULAR
@@ -137,6 +152,7 @@ ${PLURAL_NOUN}
 %%
 ADJECTIVE
 
+${NOUN}-${VERB_ING}
 Colourless
 Green
 Wireless
